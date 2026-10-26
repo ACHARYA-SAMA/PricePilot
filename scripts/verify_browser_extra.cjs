@@ -1,0 +1,90 @@
+const {chromium}=require('playwright')
+const assert=require('node:assert/strict')
+const fs=require('node:fs/promises')
+const path=require('node:path')
+async function main(){
+  const browser=await chromium.launch({headless:true,...(process.env.PLAYWRIGHT_EXECUTABLE_PATH?{executablePath:process.env.PLAYWRIGHT_EXECUTABLE_PATH}:{})})
+  const context=await browser.newContext({viewport:{width:1440,height:1000}})
+  const page=await context.newPage()
+  const checks=[]
+  const post=(name)=>page.waitForResponse(r=>r.url().includes('/api/v1/'+name)&&r.request().method()==='POST')
+  const route=async id=>{await page.evaluate(id=>location.hash='/'+id,id);await page.waitForTimeout(150)}
+  try{
+    await page.goto(process.env.PRICEPILOT_URL||'http://127.0.0.1:5173/')
+    const sample=post('optimization/run')
+    await page.getByRole('button',{name:'Analyze Sample Data',exact:true}).click()
+    const sampleResponse=await sample
+    const sampleRequest=sampleResponse.request().postDataJSON()
+    await route('optimization')
+    const actual={max_iterations:Number(await page.getByLabel('Maximum iterations',{exact:true}).inputValue()),price_tolerance:Number(await page.getByLabel('Price tolerance',{exact:true}).inputValue()),derivative_tolerance:Number(await page.getByLabel('Derivative residual tolerance',{exact:true}).inputValue())}
+    for(const field of Object.keys(actual))assert.equal(sampleRequest[field],actual[field],`sample calculation must use displayed ${field}`)
+    checks.push({flow:'sample calculation matches displayed configuration',request:sampleRequest,displayed:actual})
+
+    // Group selection must replace analysis, rather than leave all-data results.
+    await route('dataset')
+    await page.getByLabel('Search observations',{exact:true}).fill('EVT-A-001')
+    assert.equal(await page.locator('.editable-table tbody tr').count(),1)
+    await page.getByLabel('Search observations',{exact:true}).fill('')
+    await page.getByLabel(/Analyze comparable events/).selectOption('category')
+    await page.getByLabel('Selected comparable groups',{exact:true}).selectOption('Music')
+    const groupPending=post('datasets/validate')
+    await page.getByRole('button',{name:'Apply & validate',exact:true}).click()
+    const grouped=await(await groupPending).json()
+    assert.ok(grouped.valid_rows>0&&grouped.valid_rows<80)
+    assert.ok(grouped.valid_rows_data.every(o=>o.event_category==='Music'))
+    await route('optimization')
+    assert.equal(await page.getByRole('heading',{name:'Actual numerical iterations'}).count(),0)
+    checks.push({flow:'search, category selection and stale-result invalidation',selected:grouped.valid_rows})
+
+    // Topbar file pickers retain the file for mapping and preserve mixed row order.
+    const csv='identifier,fee,count\nFIRST,50,400\nINVALID,0,2\nTHIRD,150,200\nFOURTH,200,100\n'
+    let validation=post('datasets/validate')
+    await page.getByLabel('Upload historical ticket sales CSV',{exact:true}).setInputFiles({name:'mapped-order.csv',mimeType:'text/csv',buffer:Buffer.from(csv)})
+    await validation
+    await page.locator('summary').filter({hasText:'Map different CSV column names'}).click()
+    for(const [target,source]of[['event_id','identifier'],['ticket_price','fee'],['tickets_sold','count']])await page.getByLabel(target,{exact:true}).fill(source)
+    validation=post('datasets/validate')
+    await page.getByRole('button',{name:'Apply mapping & validate',exact:true}).click()
+    const mapped=await(await validation).json()
+    assert.equal(mapped.valid_rows,3)
+    await page.getByLabel('event_id row 2',{exact:true}).waitFor()
+    assert.equal(await page.getByLabel('event_id row 2',{exact:true}).inputValue(),'INVALID')
+    const rejectedDownload=page.waitForEvent('download')
+    await page.getByRole('button',{name:'Download rejected rows & errors',exact:true}).click()
+    const download=await rejectedDownload
+    const downloaded=await download.path()
+    const rejected=await fs.readFile(downloaded,'utf8')
+    assert.ok(rejected.includes('ticket_price must be greater than zero'))
+    assert.ok(rejected.includes('source_row'))
+    checks.push({flow:'topbar column mapping, preserved source order and rejected-row export',passed:true})
+    await page.getByLabel('ticket_price row 2',{exact:true}).fill('100')
+    validation=post('datasets/validate')
+    await page.getByRole('button',{name:'Apply & validate',exact:true}).click()
+    assert.equal((await(await validation).json()).valid_rows,4)
+    await page.getByLabel('Select row 2',{exact:true}).check()
+    await page.getByRole('button',{name:'Remove selected (1)',exact:true}).click()
+    assert.equal(await page.locator('.editable-table tbody tr').count(),3)
+    await page.getByRole('button',{name:'Reset to imported rows',exact:true}).click()
+    assert.equal(await page.locator('.editable-table tbody tr').count(),4)
+    assert.equal(await page.getByLabel('ticket_price row 2',{exact:true}).inputValue(),'0')
+    checks.push({flow:'repair, bulk deletion and reset restore original source',passed:true})
+
+    await page.setViewportSize({width:390,height:844})
+    const sidebar=page.locator('aside.sidebar')
+    assert.equal(await sidebar.getAttribute('inert'),'')
+    const menu=page.getByRole('button',{name:'Open navigation',exact:true})
+    await menu.click()
+    assert.equal(await sidebar.getAttribute('aria-modal'),'true')
+    for(let n=0;n<20;n++){await page.keyboard.press('Tab');assert.equal(await page.evaluate(()=>!!document.activeElement.closest('aside.sidebar')),true)}
+    await page.keyboard.press('Escape')
+    assert.equal(await menu.getAttribute('aria-expanded'),'false')
+    assert.equal(await menu.evaluate(e=>e===document.activeElement),true)
+    checks.push({flow:'mobile closed drawer inert, open focus trap, Escape and focus restoration',passed:true})
+    await page.keyboard.press('Tab')
+    assert.equal(await page.evaluate(()=>!!document.activeElement.closest('aside.sidebar')),false)
+    console.log(JSON.stringify({checks:checks.map(c=>({flow:c.flow,passed:true}))},null,2))
+    const out=path.resolve(__dirname,'../output/verification/browser')
+    await fs.writeFile(path.join(out,'browser-extra-evidence.json'),JSON.stringify(checks,null,2))
+  }finally{await browser.close()}
+}
+main().catch(e=>{console.error(e);process.exitCode=1})

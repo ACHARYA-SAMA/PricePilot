@@ -1,0 +1,81 @@
+event_id,event_name,event_category,ticket_price,tickets_sold,venue_capacity,sales_period,location,promotion_type,_synthetic,_note
+EVT-A-001,Sports Night #1,Sports,140,221,1000,18,Pune,None,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-002,Music Night #2,Music,100,395,800,11,Bangalore,Flyer,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-003,Music Night #3,Music,150,169,1000,28,Chennai,None,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-004,Tech Talk Night #4,Tech Talk,130,251,900,12,Delhi,Flyer,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-005,Comedy Night #5,Comedy,60,567,1000,12,Bangalore,Email,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-006,Cultural Night #6,Cultural,170,55,800,12,Bangalore,Flyer,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-007,Cultural Night #7,Cultural,140,194,800,22,Pune,Social Media,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-008,Comedy Night #8,Comedy,140,219,800,20,Pune,Email,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-009,Sports Night #9,Sports,70,523,800,29,Bangalore,Email,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-010,Music Night #10,Music,100,400,800,16,Chennai,Social Media,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-011,Tech Talk Night #11,Tech Talk,90,452,800,13,Delhi,None,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-012,Music Night #12,Music,160,119,800,8,Pune,None,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-013,Sports Night #13,Sports,130,270,1000,7,Bangalore,Flyer,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-014,Music Night #14,Music,150,161,1000,15,Bangalore,Email,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-015,Music Night #15,Music,100,394,900,29,Chennai,Email,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-016,Comedy Night #16,Comedy,80,487,1000,19,Chennai,Social Media,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-017,Sports Night #17,Sports,120,283,800,28,Mumbai,Email,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-018,Cultural Night #18,Cultural,60,550,1000,9,Delhi,None,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-019,Cultural Night #19,Cultural,150,143,900,9,Mumbai,None,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-020,Cultural Night #20,Cultural,130,246,800,27,Chennai,None,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-021,Cultural Night #21,Cultural,140,218,800,9,Mumbai,Email,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-022,Tech Talk Night #22,Tech Talk,90,431,800,8,Delhi,Social Media,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-023,Comedy Night #23,Comedy,170,55,1000,16,Bangalore,None,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-024,Cultural Night #24,Cultural,160,131,1000,29,Chennai,Social Media,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-025,Tech Talk Night #25,Tech Talk,140,207,800,23,Bangalore,Email,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-026,Comedy Night #26,Comedy,70,542,900,9,Pune,Social Media,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-027,Music Night #27,Music,110,340,1000,27,Pune,Social Media,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-028,Cultural Night #28,Cultural,60,569,900,27,Mumbai,Flyer,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-029,Music Night #29,Music,70,516,800,26,Pune,None,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-030,Sports Night #30,Sports,130,255,800,28,Chennai,Flyer,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-031,Music Night #31,Music,140,225,800,12,Chennai,Flyer,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-032,Music Night #32,Music,170,35,800,30,Mumbai,None,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-033,Cultural Night #33,Cultural,90,451,800,14,Chennai,Email,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-034,Music Night #34,Music,90,448,900,26,Chennai,Social Media,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-035,Music Night #35,Music,110,346,800,20,Bangalore,Email,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-036,Tech Talk Night #36,Tech Talk,70,509,900,25,Mumbai,Social Media,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-037,Cultural Night #37,Cultural,70,532,1000,22,Bangalore,Flyer,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-038,Music Night #38,Music,110,347,800,22,Pune,Email,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-039,Comedy Night #39,Comedy,80,491,1000,21,Chennai,Flyer,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-040,Cultural Night #40,Cultural,130,261,900,25,Mumbai,Email,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-041,Sports Night #41,Sports,100,424,900,24,Pune,None,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-042,Tech Talk Night #42,Tech Talk,150,159,800,10,Pune,None,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-043,Music Night #43,Music,130,245,1000,26,Mumbai,Social Media,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-044,Music Night #44,Music,90,447,1000,19,Pune,None,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-045,Music Night #45,Music,150,166,800,14,Bangalore,Email,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-046,Music Night #46,Music,150,183,900,19,Bangalore,Social Media,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-047,Tech Talk Night #47,Tech Talk,100,413,800,30,Bangalore,Flyer,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-048,Music Night #48,Music,80,493,800,27,Chennai,Social Media,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-049,Tech Talk Night #49,Tech Talk,130,282,800,27,Pune,Email,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-050,Tech Talk Night #50,Tech Talk,70,513,900,18,Chennai,None,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-051,Tech Talk Night #51,Tech Talk,70,521,900,25,Pune,Flyer,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-052,Music Night #52,Music,50,599,1000,16,Pune,Email,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-053,Cultural Night #53,Cultural,140,206,800,23,Mumbai,None,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-054,Cultural Night #54,Cultural,130,240,900,22,Delhi,None,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-055,Cultural Night #55,Cultural,130,270,1000,12,Chennai,Social Media,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-056,Music Night #56,Music,140,209,900,13,Bangalore,Flyer,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-057,Music Night #57,Music,110,332,800,8,Mumbai,Social Media,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-058,Sports Night #58,Sports,120,293,900,10,Mumbai,None,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-059,Comedy Night #59,Comedy,70,535,800,17,Bangalore,None,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-060,Comedy Night #60,Comedy,60,585,900,18,Chennai,Email,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-061,Comedy Night #61,Comedy,130,290,900,10,Mumbai,Flyer,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-062,Tech Talk Night #62,Tech Talk,110,398,900,17,Mumbai,Flyer,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-063,Sports Night #63,Sports,120,314,800,21,Mumbai,Social Media,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-064,Music Night #64,Music,140,197,900,12,Bangalore,Email,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-065,Sports Night #65,Sports,130,229,1000,15,Mumbai,Flyer,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-066,Music Night #66,Music,120,312,800,15,Bangalore,Email,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-067,Tech Talk Night #67,Tech Talk,120,296,800,19,Bangalore,Email,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-068,Tech Talk Night #68,Tech Talk,90,438,800,15,Bangalore,Flyer,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-069,Music Night #69,Music,50,603,800,24,Chennai,Flyer,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-070,Music Night #70,Music,100,398,1000,14,Bangalore,Social Media,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-071,Comedy Night #71,Comedy,80,504,800,17,Chennai,Email,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-072,Sports Night #72,Sports,100,402,1000,16,Chennai,None,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-073,Tech Talk Night #73,Tech Talk,150,160,800,11,Pune,Social Media,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-074,Sports Night #74,Sports,80,472,800,23,Chennai,Social Media,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-075,Cultural Night #75,Cultural,60,547,800,12,Bangalore,None,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-076,Comedy Night #76,Comedy,80,481,800,14,Bangalore,Social Media,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-077,Cultural Night #77,Cultural,90,444,800,26,Delhi,Social Media,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-078,Music Night #78,Music,130,287,800,29,Bangalore,Social Media,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-079,Music Night #79,Music,120,310,800,23,Mumbai,Flyer,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-A-080,Cultural Night #80,Cultural,140,227,900,28,Pune,Social Media,True,Synthetic Demonstration Data — Not Real Historical Sales

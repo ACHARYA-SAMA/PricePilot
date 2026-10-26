@@ -1,0 +1,21 @@
+import { FileText, FileJson, Table2, Download, Image } from 'lucide-react'
+import { useAppState } from '../hooks/useAppState'
+import { downloadExport } from '../services/api'
+import { Empty, Notice, PageTitle, Panel } from '../components/UI'
+import { formatINR } from '../lib/utils'
+import type { WorkProps } from '../lib/workflow'
+const exports = [
+  { id: 'pdf', title: 'Academic PDF report', description: 'Dataset context, fitted equations, diagnostics, optimization candidates, actual iterations, figures, and limitations.', Icon: FileText, label: 'Download PDF' },
+  { id: 'predictions-csv', title: 'Predictions & residuals', description: 'Every accepted observation with predicted demand and residuals for each eligible demand model.', Icon: Table2, label: 'Download predictions CSV' },
+  { id: 'analysis-json', title: 'Reproducible analysis', description: 'Analysis results, observations, selected demand model, and optimization configuration in a structured file.', Icon: FileJson, label: 'Download analysis JSON' },
+  { id: 'chart-svg', title: 'Revenue curve figure', description: 'A vector figure generated using the same demand model, price range, and capacity as the active analysis.', Icon: Image, label: 'Download chart SVG' },
+  { id: 'chart-png', title: 'Revenue curve image', description: 'A raster PNG figure for slides and documents, generated from the active model and pricing constraints.', Icon: Image, label: 'Download chart PNG' },
+  { id: 'residuals-csv', title: 'Residual diagnostics', description: 'Actual demand, fitted demand, and residuals for the selected full-data model.', Icon: Table2, label: 'Download residuals CSV' },
+  { id: 'scenarios-csv', title: 'Scenario comparison', description: 'Your current, baseline, recommended, and comparison prices evaluated with the last valid hypothetical demand multiplier.', Icon: Table2, label: 'Download scenarios CSV' },
+] as const
+export default function ReportsPage({ busy, work }: WorkProps) {
+  const { state } = useAppState()
+  return <><PageTitle eyebrow="TAKE THE EVIDENCE WITH YOU" title="Ready to explain. Ready to export.">Download calculated results and an academic report for the current dataset and settings.</PageTitle>{!state.observations.length ? <Empty/> : <><Panel title="Your export context"><dl className="key-values"><dt>Dataset</dt><dd>{state.datasetName}</dd><dt>Data origin</dt><dd>{state.isSynthetic ? 'Synthetic demonstration data' : 'User-provided observations'}</dd><dt>Accepted observations</dt><dd>{state.observations.length}</dd><dt>Selected event group</dt><dd>{state.groupLabel}</dd><dt>Selected model</dt><dd>{state.selectedModel}</dd><dt>Price range</dt><dd>{formatINR(state.pMin)}–{formatINR(state.pMax)}</dd><dt>Capacity</dt><dd>{state.capacity ?? 'Unconstrained'}</dd><dt>Price increment</dt><dd>{state.priceIncrement ?? 'Continuous price'}</dd><dt>Hypothetical scenario demand multiplier</dt><dd>{state.scenarioConfig.demandMultiplier}× (simulation only)</dd><dt>Scenario baseline price</dt><dd>{formatINR(state.scenarioConfig.baselinePrice ?? state.pMin, 2)}</dd><dt>Current scenario price</dt><dd>{formatINR(state.scenarioConfig.currentPrice ?? state.optimizationResult?.optimal_price ?? state.pMin, 2)}</dd></dl><p className="muted small">Exports request a fresh backend calculation for this context. Reports cannot establish real-world validation for synthetic observations.</p></Panel>{!state.optimizationResult && <Notice>Run revenue optimization first to review the recommendation before exporting the complete analysis.</Notice>}<div className="two-col export-grid">{exports.map(({ id, title, description, Icon, label }) => <Panel key={id}><div className="export-icon"><Icon size={24}/></div><h2>{title}</h2><p>{description}</p><button className="button subtle" disabled={busy || !state.optimizationResult} onClick={() => void work(`Preparing ${title.toLowerCase()}…`, () => downloadExport(id, state))}><Download size={15}/>{label}</button></Panel>)}</div><Panel title="Cleaned observations"><p>Download accepted data with observed revenue. This export does not require a fitted demand model.</p><button className="button subtle" disabled={busy} onClick={() => void work('Preparing cleaned observations…', () => downloadExport('cleaned-csv', state))}><Download size={15}/>Download cleaned CSV</button></Panel></>}</>
+}
+
+

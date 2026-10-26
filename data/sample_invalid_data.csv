@@ -1,0 +1,14 @@
+event_id,ticket_price,tickets_sold,venue_capacity,event_category,_synthetic,_note
+EVT-C-001,100.0,200.0,300,Music,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-C-002,100.0,195.0,300,Music,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-C-003,100.0,210.0,300,Music,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-C-004,100.0,188.0,300,Music,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-C-005,120.0,175.0,300,Music,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-C-001,100.0,200.0,300,Music,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-C-006,-50.0,150.0,300,Music,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-C-007,0.0,300.0,300,Music,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-C-008,150.0,-10.0,300,Music,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-C-009,,120.0,300,Music,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-C-010,200.0,,300,Music,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-C-011,80.0,500.0,300,Music,True,Synthetic Demonstration Data — Not Real Historical Sales
+EVT-C-012,90.0,175.7,300,Music,True,Synthetic Demonstration Data — Not Real Historical Sales
