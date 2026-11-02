@@ -29,6 +29,19 @@ npm run dev -- --host 127.0.0.1
 
 Open the URL printed by Vite (normally <http://localhost:5173>). API documentation is at <http://127.0.0.1:8000/docs>; the health endpoint is <http://127.0.0.1:8000/api/v1/health>. The development frontend proxies `/api` requests to the local backend. If a port is occupied, use a free port and update the proxy destination consistently. No database or cloud account is needed.
 
+## Deploy to Vercel
+
+Import this repository with the repository root as the Vercel project root. The
+root `vercel.json` uses Vercel Services (currently beta) to build the Vite frontend
+and the FastAPI backend together. Requests under `/api/` go to the backend;
+all other requests go to the frontend. Keep the frontend's relative API URLs so
+each deployment calls its own backend. No API keys or database are required.
+
+After deployment, check `/api/v1/health`, load a sample dataset, run an
+optimization, and export a report before sharing the site. Uploaded observations
+are processed by the hosted backend; the current workspace remains in browser
+memory and resets on refresh.
+
 ## Intended analysis workflow
 
 1. Open Dataset Studio and choose a synthetic sample or upload a CSV.
